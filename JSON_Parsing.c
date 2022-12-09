@@ -33,7 +33,7 @@ int PARSE(FILE *fp,struct Reg *arr){
     int j=0;
     char *buf;
 
-fseek(fp,0,SEEK_SET);
+    fseek(fp,0,SEEK_SET);
     c = getc(fp);
 
     while(c!=EOF){
@@ -54,7 +54,7 @@ fseek(fp,0,SEEK_SET);
     
     while(c!=EOF){
 
-        if(c != '}')  numOfChars[i]=numOfChars[i]+1; // It counts the chars before '}'/
+        if(c != '}')  numOfChars[i]++; // It counts the chars before '}'/
             else if(c=='}') i++;   //The "i" takes numOfChars in the next element of the array
 
         c = getc(fp);//Restarts the pointer fp1
@@ -102,7 +102,7 @@ int main()
     int numOfInsertions=0;//Number of JSONS
     int n;
     FILE *fp;
-    fp = fopen("My_FILE.txt","r");
+    fp = fopen("tempm.txt","r");
     n = SizeofFile(fp);
         
 
@@ -111,7 +111,7 @@ int main()
     numOfInsertions =PARSE(fp,arr); //It returns the number of registrations
  
 
-//for (int i=0; i<numOfInsertions ; i++) printf("\nTimestamp:%s | Value:%f", arr[i].tmstmp,arr[i].value);
+for (int i=0; i<numOfInsertions ; i++) printf("\nTimestamp:%s | Value:%f", arr[i].tmstmp,arr[i].value);
    
 
 }
